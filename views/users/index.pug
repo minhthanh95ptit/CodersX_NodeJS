@@ -1,4 +1,9 @@
 h1 User List
+
+form(action="/users/search", method="GET")
+    input(name ="q",type="text")
+    button Search
+
 ul
     each user in users
         li= user.id + ' ' + user.name
