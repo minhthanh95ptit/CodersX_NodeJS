@@ -23,3 +23,7 @@ Tempate engine là ngôn ngữ render HTML
 Web: pughtml.com conver HTML <-> Pug
 
 res.render(path(file_template),key=value)
+
+//Query Parameters
+req.body.q => q
+user.name.indexOf(q) -> -1 là k tồn tại 
