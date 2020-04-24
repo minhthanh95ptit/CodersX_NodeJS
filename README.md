@@ -34,30 +34,30 @@ res.render(path(file_template),key=value)
  Contentype - kiểu dũ liệu
  
  Để xem được body thì ta install body-parser
- npm install body-parser --save
 
- Thêm require body-parser
+    npm install body-parser --save
+    var bodyParser = require('body-parser');
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true}));
 
 # 5.Nodemon 
 Để server tự restart khi có thay đổi
-install nodemon --save-dev , trong nội hàm máy mình k úp lên server
+    install nodemon --save-dev // trong nội hàm máy mình k úp lên server
 Thêm vào srcipt trong package.json
-"start": "nodemon index.js",
+    "start": "nodemon index.js",
 
 # 6.lowdb
 Database nhỏ dùng cho dự án nhỏ và test
-npm install lowdb --save
+    npm install lowdb --save
 
-var low = require('lowdb');
-var FileSync = require('lowdb/adapters/FileSync');
-var adapter = new FileSync('db.json');
+    var low = require('lowdb');
+    var FileSync = require('lowdb/adapters/FileSync');
+    var adapter = new FileSync('db.json');
 //Khai báo mặc định
-db.defaults({users: []})
-    .write();
-Fix lỗi server restart liên tục
-add: nodemon.json
-{
-    "ignore":['db.json']
-}
+    db.defaults({users: []})
+        .write();
+    Fix lỗi server restart liên tục
+    add: nodemon.json
+    {
+        "ignore":['db.json']
+    }
