@@ -1,39 +1,60 @@
 var express = require('express');
-
+var bodyParser = require('body-parser');
+var low = require('lowdb');
 var app = express();
+
+
+var FileSync = require('lowdb/adapters/FileSync');
+var adapter = new FileSync('db.json');
+db = low(adapter);
+
+db.defaults({users: []})
+    .write();
+
 var port = 3000;
 
 app.set('view engine', 'pug');
 app.set('views','./views');
 
-var users = [
-    {id: 1,name: 'Pham Minh Thanh'},
-    {id: 2,name: 'Pham Minh Thu'},
-];
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
+
 
 app.get('/', function(req, res){
     res.render('index',{
-        name: 'Pham Minh Thanh'
+        name: 'Hello CodersX'
     });
 })
 
 
 app.get('/users', function(req, res){
     res.render('users/index',{
-        users: users
+        users: db.get('users').value()
     });
 })
 
 app.get('/users/search', function(req, res){
     var q = req.query.q;
 
-    var matchUsers = users.filter(function(user){
+    var matchUsers = db.get('users').value().filter(function(user){
         return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;    
     });
 
     res.render('users/index',{
         users: matchUsers
     });
+});
+
+
+app.get('/users/create', function(req, res){
+    res.render('users/create');
+});
+
+app.post('/users/create', function(req, res){
+    console.log(req.body);
+    db.get('users').value().push(req.body);
+    //create xong thi chuyen huong sang trang Users
+    res.redirect('/users');
 });
 
 app.listen(port,function(){
