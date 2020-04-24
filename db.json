@@ -1,3 +1,20 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": 1,
+      "name": "Phạm Minh Thành"
+    },
+    {
+      "name": "Phạm Minh Thành",
+      "id": "I2jDTvNHu"
+    },
+    {
+      "name": "Lư Minh Thông",
+      "id": "WZELDg36w"
+    },
+    {
+      "name": "Lư Minh Thông",
+      "id": "732d8Q4ev"
+    }
+  ]
 }
