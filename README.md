@@ -56,6 +56,8 @@ Database nhỏ dùng cho dự án nhỏ và test
 //Khai báo mặc định
     db.defaults({users: []})
         .write();
+
+    var db = low(adapter);
     Fix lỗi server restart liên tục
     add: nodemon.json
     {
