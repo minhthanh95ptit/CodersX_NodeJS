@@ -16,9 +16,7 @@ module.exports.index = function(req, res){
 
     res.render('products/index',{
         products: db.get('products').value().slice(start,end),
-        firstPage: '1',
-        page: page,
-        lastPage: lastPage
+        
     });
 };
 
