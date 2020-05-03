@@ -8,9 +8,11 @@ var router = express.Router();
 //     res.send('Hello');
 // });
 
-router.get('/',authMiddleware.requireAuth,controller.index );
+// router.get('/',authMiddleware.requireAuth,controller.index );
+router.get('/',controller.index );
 
-router.get('/search',authMiddleware.requireAuth, controller.search);
 
+// router.get('/search',authMiddleware.requireAuth, controller.search);
+router.get('/search',controller.search);
 
 module.exports = router;

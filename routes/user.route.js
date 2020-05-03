@@ -12,13 +12,21 @@ var upload = multer({ dest: './public/uploads/'});
 //     res.send('Hello');
 // });
 
-router.get('/',authMiddleware.requireAuth,controller.index );
+// router.get('/',authMiddleware.requireAuth,controller.index );
 
-router.get('/search',authMiddleware.requireAuth, controller.search);
+// router.get('/search',authMiddleware.requireAuth, controller.search);
 
-router.get('/create',authMiddleware.requireAuth, controller.create);
+// router.get('/create',authMiddleware.requireAuth, controller.create);
 
-router.get('/:id', authMiddleware.requireAuth, controller.get);
+// router.get('/:id', authMiddleware.requireAuth, controller.get);
+
+router.get('/',controller.index );
+
+router.get('/search',controller.search);
+
+router.get('/create', controller.create);
+
+router.get('/:id', controller.get);
 
 router.post('/create', 
     upload.single('avatar'),

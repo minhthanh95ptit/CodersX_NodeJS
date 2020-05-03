@@ -1,4 +1,4 @@
-var db = require('../db');
+var User = require('../models/user.model');
 var md5 = require('md5');
 //var shortid = require('shortid');
 
@@ -6,11 +6,12 @@ module.exports.login = function(req, res){
     res.render('auth/login');
 };
 
-module.exports.postLogin = function(req, res){
+module.exports.postLogin = async function(req, res){
     var email = req.body.email;
     var password = req.body.password;
 
-    var user = db.get("users").find({ email: email }).value();
+    var user = await User.findOne({ email });
+    console.log(user);
 
     if(!user){
         res.render('auth/login', {
